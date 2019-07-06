@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "include/ft_printf.h"
 
 int main()
 {
@@ -203,12 +204,12 @@ int main()
   //   printf("\n");
   //   ft_printf("%");
   //   printf("%");
-  ft_printf("as%f  zzzz\n", 54);
-  printf("as%.0f  zzzz\n", 54);
-  printf("as%.5f  zzzz\n", 54);
-  printf("as%05.3f  zzzz\n", 54);
-  printf("as%2.5f  zzzz\n", 54);
-  printf("as%+f  zzzz\n", 54);
-  printf("as%.8f  zzzz\n", 54);
+  // ft_printf("as%f  zzzz\n", 54);
+  // printf("as%.0f  zzzz\n", 54);
+  // printf("as%.5f  zzzz\n", 54);
+  // printf("as%05.3f  zzzz\n", 54);
+  // printf("as%2.5f  zzzz\n", 54);
+  // printf("as%+f  zzzz\n", 54);
+  // printf("as%.8f  zzzz\n", 54);
 
 }

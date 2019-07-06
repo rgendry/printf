@@ -6,7 +6,7 @@
 /*   By: rgendry <rgendry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 18:37:30 by  blomo            #+#    #+#             */
-/*   Updated: 2019/07/05 18:34:11 by rgendry          ###   ########.fr       */
+/*   Updated: 2019/07/05 19:50:38 by rgendry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ void	ft_printf_flags(t_param *param, char **format)
 
 void	ft_printf_lenmod(t_param *param, char **format)
 {
-	while (*(*format) == 'l' || *(*format) == 'h' || *(*format) == 'j' || *(*format) == 'z')
+	while (*(*format) == 'l' || *(*format) == 'h' ||
+		*(*format) == 'j' || *(*format) == 'z')
 	{
 		if (*(*format) == 'l' && *((*format) + 1) == 'l')
 		{

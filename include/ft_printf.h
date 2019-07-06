@@ -6,7 +6,7 @@
 /*   By: rgendry <rgendry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 12:54:30 by olesgedz          #+#    #+#             */
-/*   Updated: 2019/07/05 18:27:09 by rgendry          ###   ########.fr       */
+/*   Updated: 2019/07/06 13:16:39 by rgendry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,8 @@
 #include <stdio.h>
 # include <stdint.h>
 #include <unistd.h>
-typedef struct	s_parametri
+typedef struct	s_param
 {
-
 	int		plus:1;
 	int		minus:1;
 	int		space:1;
@@ -45,7 +44,8 @@ typedef struct	s_parametri
 	int		precision2;
 	int		cur_len;
 	int		cflag;
-} t_param;
+	int		per:1;
+}			t_param;
 
 union u_format
 {
@@ -56,8 +56,8 @@ union u_format
 	wchar_t				*ws;
 	wchar_t				wc;
 	int					d;
-	short int shi;
-	unsigned short int ushi;
+	short int			shi;
+	unsigned short int	ushi;
 	unsigned int		ud;
 	unsigned long		ul;
 	unsigned long long	ull;
@@ -125,7 +125,7 @@ char		*ft_printf_o(t_param *ft,  va_list ap, union u_format f);
 char	*ft_printf_reshetkao(t_param *ft, char *str);
 size_t	ft_strlen(const char *s);
 void	ft_putstr(char const *s);
-char	*ft_printfper(t_param *ft, va_list ap);
+char	*ft_printfper(t_param *ft);
 
 struct byte
 {

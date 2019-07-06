@@ -6,7 +6,7 @@
 /*   By: rgendry <rgendry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 18:37:07 by  blomo            #+#    #+#             */
-/*   Updated: 2019/07/05 18:33:24 by rgendry          ###   ########.fr       */
+/*   Updated: 2019/07/05 19:49:22 by rgendry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 char	*ft_param(t_param *p, char **format, va_list ap)
 {
-	char			*ptr;
+	//char			*ptr;
 	union u_format	f;
 
 	f.d = 0;
@@ -40,6 +40,7 @@ char	*ft_param(t_param *p, char **format, va_list ap)
 	// ptr[1] = '\0';
 	// ptr[0] = '%';
 	// return (ptr);
+	return (ft_printf_mix1(p, format, ap, f));
 }
 
 char	*ft_printf_mix1(t_param *ft, char **format, va_list ap, union u_format f)
@@ -49,7 +50,7 @@ char	*ft_printf_mix1(t_param *ft, char **format, va_list ap, union u_format f)
 	if (*(*format) == 'f')
 		return (ft_printf_f(ft, ap));
 	if (*(*format) == '%')
-		return (ft_printfper(ft, ap));
+		return (ft_printfper(ft));
 	// else if (*(*format) == 'C')
 	// {
 	// 	(*format)++;
