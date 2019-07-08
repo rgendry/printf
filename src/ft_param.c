@@ -6,7 +6,7 @@
 /*   By: rgendry <rgendry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 18:37:07 by  blomo            #+#    #+#             */
-/*   Updated: 2019/07/05 19:49:22 by rgendry          ###   ########.fr       */
+/*   Updated: 2019/07/06 15:02:21 by rgendry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 char	*ft_param(t_param *p, char **format, va_list ap)
 {
-	//char			*ptr;
 	union u_format	f;
 
 	f.d = 0;
@@ -24,22 +23,9 @@ char	*ft_param(t_param *p, char **format, va_list ap)
 		*(*format) == 'd' || *(*format) == 'D' || *(*format) == 's' ||
 		*(*format) == 'u' || *(*format) == 'x' || *(*format) == 'X' ||
 		*(*format) == 'o' || *(*format) == 'O' || *(*format) == 'f' ||
-		*(*format) == '%')
+		*(*format) == 'p' || *(*format) == '%')
 		return (ft_printf_mix1(p, format, ap, f));
 // U , S, p, C
-	// if (*(*format) == '%')
-	// {
-	// 	ptr = (char *)malloc(sizeof(char) * 1);
-	// 	ptr[1] = '\0';
-	// 	ptr[0] = '%';
-	// 	return (ptr);
-	// }
-	// while (*(*format) != '%')
-	// 	(*format)--;
-	// ptr = (char *)malloc(sizeof(char) * 1);
-	// ptr[1] = '\0';
-	// ptr[0] = '%';
-	// return (ptr);
 	return (ft_printf_mix1(p, format, ap, f));
 }
 
@@ -57,6 +43,8 @@ char	*ft_printf_mix1(t_param *ft, char **format, va_list ap, union u_format f)
 	// 	return (ft_putwchar(va_arg(ap, wchar_t)));
 	// }
 	 //else
+	if (*(*format) == 'p')
+		return (ft_printf_p(ft, ap));
 	if (*(*format) == 'd' || *(*format) == 'i')
 		return (ft_printf_d(ft, ap, f));
 	if (*(*format) == 'u')

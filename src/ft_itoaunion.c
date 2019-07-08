@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoaunion.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  blomo < blomo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rgendry <rgendry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 21:09:50 by  blomo            #+#    #+#             */
-/*   Updated: 2019/07/02 21:09:53 by  blomo           ###   ########.fr       */
+/*   Updated: 2019/07/07 18:35:52 by rgendry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int		ft_lenght(unsigned int n)
 char			*ft_itoauun(unsigned int n)
 {
 	int				count;
-	unsigned int				res;
+	unsigned int	res;
 	int				neg;
 	char			*out;
 
@@ -107,7 +107,7 @@ static int		ft_lenghtsc(signed char n)
 	return (count);
 }
 
-char			*ft_itoaunsc(signed char n,t_param *ft)
+char			*ft_itoaunsc(signed char n, t_param *ft)
 {
 
 	int				count;
@@ -143,8 +143,8 @@ char			*ft_itoaunsc(signed char n,t_param *ft)
 
 static int		ft_lenghtsi(unsigned short  int n)
 {
-	unsigned	short  int res;
-	int count;
+	unsigned short int	res;
+	int					count;
 
 	res = n;
 	count = 0;
@@ -158,7 +158,7 @@ static int		ft_lenghtsi(unsigned short  int n)
 	return (count);
 }
 
-char			*ft_itoaunsi(signed short int n,t_param *ft )
+char			*ft_itoaunsi(signed short int n,t_param *ft)
 {
  	int				count;
 	short unsigned int	res;

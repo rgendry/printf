@@ -6,7 +6,7 @@
 /*   By: rgendry <rgendry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 12:54:30 by olesgedz          #+#    #+#             */
-/*   Updated: 2019/07/06 13:16:39 by rgendry          ###   ########.fr       */
+/*   Updated: 2019/07/07 20:45:22 by rgendry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,17 @@
 # include <string.h>
 # include <stdlib.h>
 # include <errno.h>
-#include <stdio.h>
+# include <stdio.h>
 # include <stdint.h>
-#include <unistd.h>
+# include <unistd.h>
+
+typedef struct	s_sub
+{
+	int			i;
+	int			j;
+	int			k;
+}				t_sub;
+
 typedef struct	s_param
 {
 	int		plus:1;
@@ -44,7 +52,6 @@ typedef struct	s_param
 	int		precision2;
 	int		cur_len;
 	int		cflag;
-	int		per:1;
 }			t_param;
 
 union u_format
@@ -64,20 +71,20 @@ union u_format
 	long				ld;
 	long long			lld;
 };
-int		ft_printf(char *format, ...);
 
- char		*ft_param(t_param *p, char **format, va_list ap);
- char		*ft_printf_mix1(t_param *ft, char **format, va_list ap, union u_format f);
+int		ft_printf(char *format, ...);
+char	*ft_param(t_param *p, char **format, va_list ap);
+char	*ft_printf_mix1(t_param *ft, char **format, va_list ap, union u_format f);
 // int		ft_printf_mix2(t_param *ft, char **format, va_list ap, union u_format f);
- void	ft_parammode(t_param *param, char **format);
+void	ft_parammode(t_param *param, char **format);
 void	ft_printf_flags(t_param *param, char **format);
- int		ft_nlen_base(long i, int base);
- void	ft_printf_lenmod(t_param *param, char **format);
- char	*ft_printf_d_default(t_param *ft, char *str);
- char		*ft_printf_d(t_param *ft, va_list ap, union u_format f);
- char			*ft_itoaunsc(signed char n,t_param *ft);
- char			*ft_itoauun(unsigned int n);
- char		*ft_printf_u(t_param *ft, va_list ap, union u_format f);
+int		ft_nlen_base(long i, int base);
+void	ft_printf_lenmod(t_param *param, char **format);
+char	*ft_printf_d_default(t_param *ft, char *str);
+char	*ft_printf_d(t_param *ft, va_list ap, union u_format f);
+char	*ft_itoaunsc(signed char n,t_param *ft);
+char	*ft_itoauun(unsigned int n);
+char	*ft_printf_u(t_param *ft, va_list ap, union u_format f);
 
 // int		ft_printf_d(t_param *ft, char **fmt, va_list ap, union u_format f);
 // int		ft_lldlen_base(long long value, int base);
@@ -102,26 +109,26 @@ char			*ft_itoaunll(unsigned long long int n);
 
 
 void	ft_bzero(void *str, size_t len);
-int			ft_atoi(const char *str);
+int		ft_atoi(const char *str);
 void	ft_putchar(char c);
 
-
-char		*ft_printf_c(t_param *ft, va_list ap);
-char		*ft_printf_s(t_param *ft,  va_list ap);
-char		*ft_printf_x(t_param *ft,  va_list ap, union u_format f);
+char	*ft_printf_p(t_param *ft, va_list ap);
+char	*ft_printf_c(t_param *ft, va_list ap);
+char	*ft_printf_s(t_param *ft,  va_list ap);
+char	*ft_printf_x(t_param *ft,  va_list ap, union u_format f);
 int		ft_lldlen_base(long long value, int base);
 int		ft_ulld_len_base(unsigned long long value, int base);
 int		ft_uld_len_base(unsigned long value, int base);
 int		ft_ud_len_base(unsigned int value, int base);
 int		ft_nlen_base(long value, int base);
-char		*ft_ulldtoa_base(unsigned long long value, int base);
-char		*ft_uldtoa_base(unsigned long value, int base);
-char		*ft_lldtoa_base(long long value, int base);
-char		*ft_uhhdtoa_base(unsigned char value, int base);
-char		*ft_ulldtoa_base_alt(unsigned long long value, int base);
-char		*ft_printf_bigx(t_param *ft, va_list ap, union u_format f);
+char	*ft_ulldtoa_base(unsigned long long value, int base);
+char	*ft_uldtoa_base(unsigned long value, int base);
+char	*ft_lldtoa_base(long long value, int base);
+char	*ft_uhhdtoa_base(unsigned char value, int base);
+char	*ft_ulldtoa_base_alt(unsigned long long value, int base);
+char	*ft_printf_bigx(t_param *ft, va_list ap, union u_format f);
 char	*ft_printf_reshetka(t_param *ft, char *str);
-char		*ft_printf_o(t_param *ft,  va_list ap, union u_format f);
+char	*ft_printf_o(t_param *ft,  va_list ap, union u_format f);
 char	*ft_printf_reshetkao(t_param *ft, char *str);
 size_t	ft_strlen(const char *s);
 void	ft_putstr(char const *s);
@@ -130,7 +137,7 @@ char	*ft_printfper(t_param *ft);
 struct byte
 {
 			unsigned long long int mantissa:52;
-  		unsigned int poryadok:11;
+			unsigned int poryadok:11;
 			unsigned int znak:1;
 };
 union Byte
