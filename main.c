@@ -212,6 +212,9 @@ int main()
   // printf("as%+f  zzzz\n", 54);
   // printf("as%.8f  zzzz\n", 54);
 
-  ft_printf("%0.9p\n", 1234);
-  printf("%0.9p\n", 1234);
+  ft_printf("%.0p, %.p\n", 0, 0);
+  printf("%.0p, %.p\n", 0, 0);
+
+  ft_printf("%.5p\n", 0);
+  printf("%.5p\n", 0);
 }

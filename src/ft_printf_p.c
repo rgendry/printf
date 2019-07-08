@@ -6,7 +6,7 @@
 /*   By: rgendry <rgendry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/06 14:22:45 by rgendry           #+#    #+#             */
-/*   Updated: 2019/07/08 16:23:36 by rgendry          ###   ########.fr       */
+/*   Updated: 2019/07/08 19:16:06 by rgendry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,24 @@ char	*ft_tmp_str(t_param *ft, int size)
 {
 	char	*str;
 	int		i;
+	int		width;
 
 	i = 0;
+	if (!ft->precision1 && ft->precision)
+		width = ft->precision - size;
+	else if (ft->precision1)
+		width = ft->width - size;
+	else
+		width = ft->width - size - 2;
 	str = (char *)malloc(sizeof(char) * (ft->width - size - 1));
-	while (i < (int)(ft->width - size - 2))
+	while (i < width)
 	{
-		printf("%d\n", ft->zero);
-		if (ft->zero == 0)
-		{
+		if (ft->precision1)
 			str[i] = ' ';
-		}
-		else
+		else if (ft->precision || ft->zero)
 			str[i] = '0';
+		else
+			str[i] = ' ';
 		i++;
 	}
 	str[i] = '\0';
@@ -70,19 +76,32 @@ char	*ft_printf_p(t_param *ft, va_list ap)
 	a = va_arg(ap, void*);
 	add = (unsigned long)a;
 	ptr = ft_ulldtoa_base(add, 16);
-	// if (strcmp(ptr, "0"))
-	// 	ptr = NULL;
-	printf("%d\n", ft->width);
+	if (!a)
+	{
+		ptr = (char *)malloc(sizeof(char) * 1);
+		ptr[0] = '\0';
+	}
+	if (ft->precision)
+	{
+		if (ft->width < ft->precision)
+			ft->width = ft->precision;
+		str = ft_tmp_str(ft, (int)ft_strlen(ptr));
+		ptr = ft_addjoin("0x", ft_addjoin(str, ptr));
+		free(str);
+		ft->precision1 = 1;
+	}
 	if (ft->width > (int)ft_strlen(ptr))
 	{
 		str = ft_tmp_str(ft, (int)ft_strlen(ptr));
-		if (ft->minus != 0)
-			ptr = ft_addjoin("0x", ft_addjoin(ptr, str));
+		if (ft->minus)
+			ptr = ft_addjoin(ptr, str);
+		if (ft->precision1)
+			ptr = ft_addjoin(str, ptr);
 		else
 			ptr = ft_addjoin(ft_addjoin(str, "0x"), ptr);
 		free(str);
 	}
-	else
+	else if (!ft->width && !ft->precision)
 		ptr = ft_addjoin("0x", ptr);
 	return (ptr);
 }
