@@ -3,12 +3,13 @@
 char *rec_mas(char **str)
 {
 	char *result;
+	result = NULL;
 	int i;
 	int i1;
 	char c;
 	int temp1;
 	result = *str;
-	i = strlen(result) - 1;
+	i = ft_strlen(result) - 1;
   temp1 = 0;
   i1 = i;
   while(i != temp1)

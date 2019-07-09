@@ -4,12 +4,15 @@ char *multiplication(char *a, char *b, int size1, int size2)
 {
 	flag ptr;
   char *result;
+	result = NULL;
   int i1;
   int i;
   ptr.one = 0;
   i = 0;
   i1 = 0;
-  result = (char*)malloc(sizeof(char) * (size1 + size2 + 1));
+  if(!(result = (char*)malloc(sizeof(char) * (size1 + size2 + 1))))
+		return(NULL);
+	result[size1 + size2] = '\0';
   ft_bzero(result,size1 + size2 +1);
   while(--size2 > -1)
   {

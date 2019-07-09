@@ -6,7 +6,7 @@
 /*   By:  blomo < blomo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 21:14:48 by  blomo            #+#    #+#             */
-/*   Updated: 2019/07/02 21:14:50 by  blomo           ###   ########.fr       */
+/*   Updated: 2019/07/09 15:53:30 by blomo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,30 @@ char		*ft_lldtoa_base(long long value, int base)
 }
 
 char		*ft_uhhdtoa_base(unsigned char value, int base)
+{
+	static char			*hex = "0123456789abcdef";
+	char				*result;
+	long long			n;
+	int					len;
+
+	n = value;
+
+	len = ft_nlen_base(n, base);
+	result = (char*)malloc(len + 1);
+	result[len--] = '\0';
+	if (value == 0)
+	{
+		result[0] = '0';
+		return (result);
+	}
+	while (n)
+	{
+		result[len--] = hex[n % base];
+		n /= base;
+	}
+	return (result);
+}
+char		*ft_uhhdtoa_baseo(unsigned short int value, int base)
 {
 	static char			*hex = "0123456789abcdef";
 	char				*result;

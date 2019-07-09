@@ -1,8 +1,8 @@
 #include "ft_printf.h"
 
-int ft_power(int pow)
+unsigned long int ft_power(int pow)
 {
-	int p;
+	unsigned long int p;
 	p = 1;
 	if(pow == 0)
 		return(1);

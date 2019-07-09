@@ -6,7 +6,7 @@
 /*   By:  blomo < blomo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 21:15:39 by  blomo            #+#    #+#             */
-/*   Updated: 2019/07/02 21:16:03 by  blomo           ###   ########.fr       */
+/*   Updated: 2019/07/09 17:01:28 by blomo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ char	*ft_printf_reshetka(t_param *ft, char *str)
 		{
       ptr[x++] = '0';
       ptr[x++] = 'x';
-      p = p + 2;
+      //p = p + 2;
 			while(ft->precision > p)
 			{
 				ptr[x] = '0';
@@ -150,7 +150,7 @@ char	*ft_printf_reshetka(t_param *ft, char *str)
       }
 		}
 	}
-		if((!ft->precision && !ft->width ) || ft->width < p)
+		if((!ft->precision && !ft->width )) //|| ft->width < p)
 		{
       ptr[x++] = '0';
       ptr[x++] = 'x';
@@ -163,5 +163,6 @@ char	*ft_printf_reshetka(t_param *ft, char *str)
 			x++;
 		}
 		free(str);
+		ptr[x] = '\0';
 		return(ptr);
 }

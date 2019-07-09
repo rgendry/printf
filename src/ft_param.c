@@ -3,33 +3,49 @@
 /*                                                        :::      ::::::::   */
 /*   ft_param.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgendry <rgendry@student.42.fr>            +#+  +:+       +#+        */
+/*   By:  blomo < blomo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 18:37:07 by  blomo            #+#    #+#             */
-/*   Updated: 2019/07/06 15:02:21 by rgendry          ###   ########.fr       */
+/*   Updated: 2019/07/09 18:12:17 by blomo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "ft_printf.h"
 
-char	*ft_param(t_param *p, char **format, va_list ap)
+char		*ft_param(t_param *p, char **format, va_list ap)
 {
+	char *ptr;
+	ptr = NULL;
 	union u_format	f;
-
 	f.d = 0;
-	ft_parammode(p, format);
+	ft_parammode(p, format,ap);
 	if (*(*format) == 'c' || *(*format) == 'C' || *(*format) == 'i' ||
-		*(*format) == 'd' || *(*format) == 'D' || *(*format) == 's' ||
-		*(*format) == 'u' || *(*format) == 'x' || *(*format) == 'X' ||
-		*(*format) == 'o' || *(*format) == 'O' || *(*format) == 'f' ||
-		*(*format) == 'p' || *(*format) == '%')
+			*(*format) == 'd' || *(*format) == 'D' || *(*format) == 's' ||
+		*(*format) == 'u' || *(*format) == 'x' || *(*format) == 'X' || *(*format) == 'o' || *(*format) == 'O'
+	|| *(*format) == 'f'|| *(*format) == '%' || *(*format) == 'p')
 		return (ft_printf_mix1(p, format, ap, f));
 // U , S, p, C
-	return (ft_printf_mix1(p, format, ap, f));
+	if (*(*format) == '%')
+	{
+		ptr = (char *)malloc(sizeof(char) * 1);
+		ptr[1] = '\0';
+		ptr[0] = '%';
+		return (ptr);
+	}
+	if(*(*format) == '\0')
+	{
+		return(ptr);
+	}
+	while(*(*format) != '%')
+		(*format)--;
+	ptr = (char *)malloc(sizeof(char) * 1);
+	ptr[1] = '\0';
+	ptr[0] = '%';
+	return(ptr);
 }
 
-char	*ft_printf_mix1(t_param *ft, char **format, va_list ap, union u_format f)
+char		*ft_printf_mix1(t_param *ft, char **format, va_list ap, union u_format f)
 {
 	if (*(*format) == 'c')
 		return (ft_printf_c(ft, ap));
@@ -37,26 +53,28 @@ char	*ft_printf_mix1(t_param *ft, char **format, va_list ap, union u_format f)
 		return (ft_printf_f(ft, ap));
 	if (*(*format) == '%')
 		return (ft_printfper(ft));
+	if (*(*format) == 'p')
+		return (ft_printf_p(ft, ap));
 	// else if (*(*format) == 'C')
 	// {
 	// 	(*format)++;
 	// 	return (ft_putwchar(va_arg(ap, wchar_t)));
 	// }
 	 //else
-	if (*(*format) == 'p')
-		return (ft_printf_p(ft, ap));
-	if (*(*format) == 'd' || *(*format) == 'i')
-		return (ft_printf_d(ft, ap, f));
-	if (*(*format) == 'u')
-		return (ft_printf_u(ft, ap, f));
+	 if (*(*format) == 'd' || *(*format) == 'i')
+			return (ft_printf_d(ft,  ap, f));
+		if(*(*format) == 'u')
+			return (ft_printf_u(ft,  ap, f));
 	if (*(*format) == 's')
-		return (ft_printf_s(ft, ap));
+		 	return (ft_printf_s(ft,  ap));
 	if (*(*format) == 'x')
-		return (ft_printf_x(ft, ap, f));
+	 	return (ft_printf_x(ft,  ap, f));
 	if (*(*format) == 'X')
-		return (ft_printf_bigx(ft, ap, f));
-	if (*(*format) == 'o' || *(*format) == 'O')
-		return (ft_printf_o(ft, ap, f));
+		return (ft_printf_bigx(ft,  ap, f));
+	if (*(*format) == 'o')
+		return (ft_printf_o(ft,  ap, f));
+	if (*(*format) == 'O')
+		return (ft_printf_o(ft,  ap, f));
 	// else if (*(*format) == 'D')
 	// {
 	// 	(*format)++;

@@ -1,11 +1,13 @@
 #include <stdio.h>
-#include "include/ft_printf.h"
+#include "ft_printf.h"
+
 
 int main()
 {
-  // int i ;
-  //   ft_printf("asdasds%10.d  zzzz\n", 454657);
-  //   printf("asdasds%10.d  zzzz\n", 454657);
+   int i ;
+	 int c;
+    // ft_printf("asdasds%10.d  zzzz\n", 454657);
+    // printf("asdasds%10.hhd  zzzz\n", -129);
   //   //
   //   ft_printf("asdasds%+10.0d  zzzz\n", 454657);
   //   printf("asdasds%+10.0d  zzzz\n", 454657);
@@ -202,19 +204,176 @@ int main()
   //   ft_printf("%-5+d\n", -42);
   //   printf("%-5+d\n", -42);
   //   printf("\n");
-  //   ft_printf("%");
+  //ft_printf("%");
   //   printf("%");
-  // ft_printf("as%f  zzzz\n", 54);
-  // printf("as%.0f  zzzz\n", 54);
-  // printf("as%.5f  zzzz\n", 54);
+  // ft_printf("as%.30f  zzzz\n", 3452.783424149);
+	// printf("as%.30f  zzzz\n", 3452.783424149);
+	// ft_printf("as%.30f  zzzz\n", 3452.783424149);
+	// printf("as%.30f  zzzz\n", 3452.783424149);
+	// ft_printf("as%.30f  zzzz\n", 1.783424149);
+	// printf("as%.30f  zzzz\n", 1.783424149);
+	// // ft_printf("as%f  zzzz\n", 0.783424149);
+	// // printf("as%f  zzzz\n", 0.783424149);
+	// ft_printf("as%+f  zzzz\n", 1043636436.263636397893);
+	// ft_printf("as%+f  zzzz\n", 034564363.2363633);
+
+	// ft_printf("as%+.10f  zzzz\n", 0.0);
+	// printf("as%+.10f  zzzz\n", 0.0);
+
+	// ft_printf("as%+f  zzzz\n", -164363460.2463633);
+	//
+	// printf("\n\n\n\n\n");
+	// ft_printf("as%+.10000Lf  zzzz\n", LDBL_MIN);
+	// printf("as%+.10000Lf  zzzz\n", LDBL_MIN);
+	// ft_printf("as%-+15f  zzzz\n", -99.5);
+	// printf("as%-+15f  zzzz\n", -99.5);
+	// ft_printf("as%-+15f  zzzz\n", 0.5);
+	// printf("as%-+15f  zzzz\n", 0.5);
+	// ft_printf("as%-+15f  zzzz\n", 99.5);
+	// printf("as%0+15f  zzzz\n", 0.4445);
+	// ft_printf("as%0+15f  zzzz\n", 0.44446346363636363635);
+	// printf("as%-+15f  zzzz\n", 99.5);
+	// ft_printf("as%-+15f  zzzz\n", 99.5);
+	// printf("as%-+15f  zzzz\n", 99.5);
+	// ft_printf("as%-+15f  zzzz\n", 99.5);
+	// printf("as%-+15f  zzzz\n", 99.5);
+	// ft_printf("as%-+15f  zzzz\n", 99.5);
+	// printf("as%-+15f  zzzz\n", 99.5);
+	// ft_printf("as%-+15f  zzzz\n", 99.5);
+	// printf("as%-+15f  zzzz\n", 99.5);
+	// ft_printf("as%-+15f  zzzz\n", 99.5);
+	// printf("as%-+15f  zzzz\n", 99.5);
+	// ft_printf("as%-+15f  zzzz\n", 99.5);
+	// printf("as%-+15f  zzzz\n", 99.5);
+	// ft_printf("as%-+15f  zzzz\n", 99.5);
+	// printf("as%-+15f  zzzz\n", 99.5);
+	// ft_printf("as%f  zzzz\n", -9.56456377375475);
+	// printf("as%f  zzzz\n", -9.56456377375475);
+	// ft_printf("as%f  zzzz\n", 9.56456377375475);
+	// printf("as%f  zzzz\n", 9.56456377375475);
+	// ft_printf("as%f  zzzz\n", 9.56456377375475);
+	// printf("as%f  zzzz\n", 9.56456377375475);
+	// ft_printf("as%.10f  zzzz\n", 0.56456377375475);
+	// printf("as%.10f  zzzz\n", 0.56456377375475);
+	// ft_printf("as%.f  zzzz\n", 1.5);
+	// printf("as%.f  zzzz\n", 1.5);
+	// ft_printf("as%.f  zzzz\n", 9.490);
+	// printf("as%.f  zzzz\n", 9.490);
+	// ft_printf("as%.f  zzzz\n", 9.520);
+	// printf("as%.f  zzzz\n", 9.520);
+	// ft_printf("as%f  zzzz\n", -99.500);
+	// printf("as%f  zzzz\n", -99.500);
+	// ft_printf("as%f  zzzz\n", 9.555555);
+	// printf("as%f  zzzz\n", 9.555555);
+	// ft_printf("as%f  zzzz\n", 98.9999999);
+	// printf("as%f  zzzz\n", 98.9999999);
+	// ft_printf("as%f  zzzz\n", 99.9999999);
+	// printf("as%f  zzzz\n",99.9999999);
+	// printf("as%.1f  zzzz\n", 9.500000000001);
+	// ft_printf("as%.30f  zzzz\n", 3452.783424149);
+	// printf("as%.30f  zzzz\n", 3452.783424149);
+	// ft_printf("as%.30f  zzzz\n", 3452.783424149);
+	// printf("as%.30f  zzzz\n", 3452.783424149);
+	// ft_printf("as%.30f  zzzz\n", -3452.783424149);
+	// printf("as%.30f  zzzz\n", -3452.783424149);
+	// ft_printf("as%.30f  zzzz\n", -1.783424149);
+	// printf("as%.30f  zzzz\n", -1.783424149);
+	// ft_printf("as%f  zzzz\n", -0.783424149);
+	// printf("as%f  zzzz\n", -0.783424149);
+	// ft_printf("as%f  zzzz\n", -0.25);
+	// printf("as%f  zzzz\n", -0.25);
+	// ft_printf("as%.30f  zzzz\n", 0.25);
+	// printf("as%.30f  zzzz\n", 0.25);
+	// ft_printf("as%.30f  zzzz\n", 0.25);
+	// printf("as%.30f  zzzz\n", 0.25);
+	// printf("as%f  zzzz\n", 3452.783424149);
+	// printf("as%Lf  zzzz\n", 54.5e400);
+	// ft_printf("as%f  zzzz\n", 0.5e100);
+	// ft_printf("as%f  zzzz\n", 1.5e100);
+	// ft_printf("as%f  zzzz\n", -1.5e100);
+	// ft_printf("as%f  zzzz\n", -0.5e100);
+	// ft_printf("as%f  zzzz\n", 2.5e100);
+	// ft_printf("as%f  zzzz\n", 00.5e100);
+	// ft_printf("as%f  zzzz\n", 4.5e100);
+	// printf("as%.2f  zzzz\n", 0.1250000000);
+	// printf("as%.2f  zzzz\n", 3.55);
+	//
+	// printf("as% +-7.2fkk  zzzz\n", 1.0);
+
+  // ft_printf("as%.10000Lf  zzzz\n", LDBL_MIN);
+  // printf("as%.10000Lf  zzzz\n", LDBL_MIN);
   // printf("as%05.3f  zzzz\n", 54);
   // printf("as%2.5f  zzzz\n", 54);
   // printf("as%+f  zzzz\n", 54);
   // printf("as%.8f  zzzz\n", 54);
+	// ft_printf("%#llxhh\n", 9223372036854775807);
+	// printf("%#llxhh\n", 9223372036854775807);
+	ft_printf("%");
+	printf("%");
+	ft_printf("%hu, %hu\n", 0, USHRT_MAX);
+	printf("%hu, %hu\n", 0, USHRT_MAX);
+	ft_printf("%ho, %ho\n", 0, USHRT_MAX);
+	printf("%ho, %ho\n", 0, USHRT_MAX);
+	ft_printf("%hx, %hx\n", 0, USHRT_MAX);
+	printf("%hx, %hx\n", 0, USHRT_MAX);
+	ft_printf("%hX, %hX\n", 0, USHRT_MAX);
+	printf("%hX, %hX\n", 0, USHRT_MAX);
+	ft_printf("%p\n", 0);
+	printf("%p\n", 0);
+	ft_printf("%hhu, %hhu\n", 0, UCHAR_MAX);
+	printf("%hhu, %hhu\n", 0, UCHAR_MAX);
+	ft_printf("%#o\n", 0);
+	printf("%#o\n", 0);
+	ft_printf("%.4d\n", -424242);
+	printf("%.4d\n", -424242);
+	ft_printf("%15.4d\n", -42);
+	printf("%15.4d\n", -42);
+	ft_printf("%15.4s\n", "42");
+	printf("%15.4s\n", "42");
+	ft_printf("%15.4s\n", 0);
+	printf("%15.4s\n", 0);
+	i = ft_printf("%s\n", "42 is the answer");
+	c = printf("%s\n", "42 is the answer");
+	printf("%d%d\n",i,c);
+	ft_printf("%.p, %.p\n", 0, 0);
+	printf("%.p, %.p\n", 0, 0);
+	ft_printf("{%#.5x}\n", 1);
+	printf("{%#.5x}\n", 1);
+	ft_printf("{%-15p}\n", 0);
+	printf("{%-15p}\n", 0);
+	ft_printf("{% 03d}\n", 0);
+	printf("{% 03d}\n", 0);
+	ft_printf("%#.3o\n", 1);
+	printf("%#.3o\n", 1);
+	ft_printf("%#.o, %#.0o\n", 0, 0);
+	printf("%#.o, %#.0o\n", 0, 0);
+	ft_printf("{%*d}\n", -5, 42);
+	printf("{%*d}\n", -5, 42);
+	ft_printf("{%*c}\n", -15, 0);
+	printf("{%*c}\n", -15, 0);
+	ft_printf("{%-15c}\n", 0);
+	printf("{%-15c}\n", 0);
+	ft_printf("{%*c}\n", -15, 0);
+	printf("{%*c}\n", -15, 0);
+	ft_printf("{%.*s}\n", 0, "42");
+	printf("{%.*s}\n", 0, "42");
+	ft_printf("{%05.*d}\n", -15, 42);
+	printf("{%05.*d}\n", -15, 42);
+	ft_printf("{%05.15d}\n", 42);
+	printf("{%05.15d}\n", 42);
 
-  ft_printf("%.0p, %.p\n", 0, 0);
-  printf("%.0p, %.p\n", 0, 0);
 
-  ft_printf("%.5p\n", 0);
-  printf("%.5p\n", 0);
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

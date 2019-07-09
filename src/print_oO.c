@@ -6,7 +6,7 @@
 /*   By:  blomo < blomo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 21:14:38 by  blomo            #+#    #+#             */
-/*   Updated: 2019/07/02 21:22:53 by  blomo           ###   ########.fr       */
+/*   Updated: 2019/07/09 15:54:46 by blomo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char		*ft_printf_o(t_param *ft, va_list ap, union u_format f)
 	else if (ft->h)
 	{
 		f.ushi = va_arg(ap,unsigned int);
-		ptr = ft_uhhdtoa_base(f.uc, 8);
+		ptr = ft_uhhdtoa_baseo(f.ushi, 8);
 	}
 	else
 	{

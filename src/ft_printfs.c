@@ -6,7 +6,7 @@
 /*   By:  blomo < blomo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 21:13:03 by  blomo            #+#    #+#             */
-/*   Updated: 2019/07/02 21:22:38 by  blomo           ###   ########.fr       */
+/*   Updated: 2019/07/09 18:49:26 by blomo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 char		*ft_printf_s(t_param *ft, va_list ap)
 {
   char *ptr;
+	ptr = NULL;
   char *str;
   char *str1;
   str1 = NULL;
@@ -24,7 +25,10 @@ char		*ft_printf_s(t_param *ft, va_list ap)
   int i;
   int z;
   i = 0;
-
+	if(ft->precision2 && ft->precision == 0)
+	{
+		return(ptr);
+	}
   str = va_arg(ap,char *);
   if(str1 != str)
     i = ft_strlen(str);
@@ -32,7 +36,7 @@ char		*ft_printf_s(t_param *ft, va_list ap)
     i = 6;
   if(ft->width > i)
     z = ft->width;
-  else if (ft->precision && ft->precision < i)
+  else if (ft->precision && ft->precision > i)
     z = ft->precision;
   else
     z = i;
@@ -40,7 +44,7 @@ char		*ft_printf_s(t_param *ft, va_list ap)
   //   ft->width+=2;
   if(i == 0)
     ft->precision = 0;
-  if(!(ptr = (char*)malloc(sizeof(char) * (z+1))))
+  if(!(ptr = (char*)malloc(sizeof(char) * (z))))
     return(NULL);
   ptr[z] = '\0';
   if(str == str1)
@@ -78,8 +82,10 @@ char		*ft_printf_s(t_param *ft, va_list ap)
   }
   else
   {
-    if(ft->width && ft->precision && ft->width > ft->precision)
-      z = ft->width - ft->precision;
+    if(ft->width && ft->precision && ft->width > ft->precision && ft->precision > i)
+      z = ft->width - i;
+		else if(ft->width && ft->precision && ft->width > ft->precision && ft->precision < i)
+			z = ft->width - ft->precision;
     else if (ft->width && ft->width > i)
       z = ft->width - i;
     else
@@ -102,6 +108,7 @@ char		*ft_printf_s(t_param *ft, va_list ap)
           ft->precision--;
         }
       }
+
       else
       {
         while(*str)
@@ -111,6 +118,6 @@ char		*ft_printf_s(t_param *ft, va_list ap)
           str++;
         }
       }
-      return(ptr);
 }
+return(ptr);
 }

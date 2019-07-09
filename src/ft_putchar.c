@@ -6,11 +6,11 @@
 /*   By: blomo <blomo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 04:03:43 by blomo             #+#    #+#             */
-/*   Updated: 2019/07/02 18:32:26 by  blomo           ###   ########.fr       */
+/*   Updated: 2019/07/09 14:55:36 by blomo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "ft_printf.h"
 
 void	ft_putchar(char c)
 {

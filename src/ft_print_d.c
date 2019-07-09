@@ -6,7 +6,7 @@
 /*   By:  blomo < blomo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 17:57:08 by  blomo            #+#    #+#             */
-/*   Updated: 2019/07/02 22:35:48 by  blomo           ###   ########.fr       */
+/*   Updated: 2019/07/09 17:53:10 by blomo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void ft_minus(char *ptr,t_param *ft, char *str)
 			ptr[i] = ' ';
 			i++;
 		}
+		ptr[i] = '\0';
 	}
 }
 
@@ -78,6 +79,7 @@ static int ft_znak(char *ptr,t_param *ft,int x)
 char	*ft_printf_d_default(t_param *ft, char *str)
 {
 	char *ptr;
+	ptr = NULL;
 	int i;
 	int c;
 	int p;
@@ -119,8 +121,8 @@ char	*ft_printf_d_default(t_param *ft, char *str)
 		{
 
 			i = ft->width;
-			if(ft->cur_len == -1)
-				i--;
+			// if(ft->cur_len == -1)
+			// 	i--;
 			while(i > ft->precision)
 			{
 				ptr[x] = ' ';
@@ -137,7 +139,7 @@ char	*ft_printf_d_default(t_param *ft, char *str)
 
 			//пробелы потом точность
 		}
-		else if (ft->precision > ft->width && ft->precision > p)
+		else if (ft->precision > ft->width && ft->precision -1 > p)
 		{
 			x = ft_znak(ptr,ft,x);
 			while(ft->precision > p)
@@ -150,6 +152,12 @@ char	*ft_printf_d_default(t_param *ft, char *str)
 		}
 		else if(ft->precision < ft->width && ft->width > p)
 		{
+			if(ft->space)
+			{
+				ptr[x++] = ' ';
+				if(ft->width)
+					ft->width--;
+			}
 			if(ft->zero)
 			{
 				x = ft_znak(ptr,ft,x);
@@ -169,6 +177,8 @@ char	*ft_printf_d_default(t_param *ft, char *str)
 			x = ft_znak(ptr,ft,x);
 			//пробелы
 		}
+		else if(ft->precision < p)
+			x = ft_znak(ptr,ft,x);
 	}
 		if(!ft->precision && !ft->width)
 		{
@@ -183,6 +193,7 @@ char	*ft_printf_d_default(t_param *ft, char *str)
 			i++;
 			x++;
 		}
+		ptr[x] = '\0';
 		free(str);
 		return(ptr);
 }
@@ -192,6 +203,8 @@ char		*ft_printf_d(t_param *ft, va_list ap, union u_format f)
 
 	char *ptr;
 	char *ptr1;
+	ptr = NULL;
+	ptr1 = NULL;
 	if(ft->cur_len == 2)
 	{
 		f.ud = va_arg(ap, unsigned int);
@@ -265,17 +278,17 @@ char		*ft_printf_u(t_param *ft,  va_list ap, union u_format f)
 		// 	ft->cur_len = -1;
 		// 	f.sc = f.sc * -1;
 		// }
-		ptr = ft_itoaunsc(f.uc,ft);
+		ptr = ft_itoaun(f.uc,ft);
 	}
 	else if (ft->h)
 	{
-		f.shi = va_arg(ap,unsigned int);
+		f.ushi = va_arg(ap,unsigned int);
 		// if(f.shi < 0)
 		// {
 		// 	ft->cur_len = -1;
 		// 	f.shi = f.shi * -1;
 		// }
-		ptr = ft_itoaunsi(f.shi, ft);
+		ptr = ft_itoaunsiUU(f.ushi);
 	}
 	else
 	{

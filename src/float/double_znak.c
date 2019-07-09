@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-int ft_znakk(double nbr)
+int ft_znakk(long double nbr)
 {
 	union Byte x;
 	int i;

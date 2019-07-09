@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rgendry <rgendry@student.42.fr>            +#+  +:+       +#+         #
+#    By: myoung <myoung@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/05/28 14:52:14 by rgendry           #+#    #+#              #
-#    Updated: 2019/07/07 20:34:55 by rgendry          ###   ########.fr        #
+#    Created: 2016/11/28 14:52:14 by myoung            #+#    #+#              #
+#    Updated: 2019/07/09 14:45:30 by blomo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,9 @@ MAIN = main.c
 FILES = ft_putchar.c ft_putstr.c ft_strlen.c ft_bzero.c ft_atoi.c ft_strdup.c\
 ft_param.c print_oO.c reshetka_o.c ft_printf_xX.c reshetka.c printf_itoabase.c\
 len_base.c ft_printfs.c ft_print_C.c ft_parammode.c ft_print_d.c ft_printf.c ft_itoaunion.c\
-pow_nb.c slozhenie.c mantisa_str.c otric_poryadok.c rec_mas.c double_znak.c ft_count_mantisa.c\
-count_poryadok.c ft_bzero.c delenie.c vozvedenie.c ymnozhenie.c ft_printf_f.c ft_printfper.c\
-ft_printf_p.c
+slozhenieminusdrob.c minusdroppart.c slosheniedrob.c drobpart.c realpart.c pow_nb.c ft_printf_f.c\
+slozhenie.c otric_poryadok.c rec_mas.c double_znak.c count_poryadok.c delenie.c\
+vozvedenie.c ymnozhenie.c precisiondouble.c parsingfloat.c ft_strcpy.c ft_printfper.c ft_printf_p.c
 
 OBJ = $(addprefix build/, $(FILES:.c=.o))
 SRC = $(addprefix src/, $(FILES))
@@ -51,12 +51,12 @@ build:
 	mkdir build
 
 clean:
-	/bin/rm -rf build
-	/bin/rm -rf $(OBJ)
+	@rm -rf *.o build
 	@echo "clean successful"
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	@echo "Removing $(NAME)"
+	rm -f *.a $(NAME)
 
 test:
 	make re

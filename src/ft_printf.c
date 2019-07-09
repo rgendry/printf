@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgendry <rgendry@student.42.fr>            +#+  +:+       +#+        */
+/*   By:  blomo < blomo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 17:56:53 by  blomo            #+#    #+#             */
-/*   Updated: 2019/07/06 13:17:53 by rgendry          ###   ########.fr       */
+/*   Updated: 2019/07/09 18:41:54 by blomo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,13 @@ int		ft_printf(char *format, ...)
 {
 	int i;
 	char *ptr;
+	ptr = NULL;
 	va_list ap;
 	t_param p;
 	int x;
 	x = 0;
-	char printstr[100];
-	ft_bzero(printstr, 100);
+	char printstr[20000];
+	ft_bzero(printstr, sizeof(printstr));
 	i = 0;
 	ft_bzero(&p, sizeof(p));
 	va_start(ap, format);
@@ -29,21 +30,38 @@ int		ft_printf(char *format, ...)
 	{
 		if (*format == '%')
 		{
-			ptr = ft_param(&p, &format, ap);
-			while (ptr[x])
-				printstr[i++] = ptr[x++];
-			if (*format == 'c' && (p.cflag == 1))
+			ptr = ft_param(&p , &format, ap);
+			if (p.cflag == 2)
 				printstr[i++] = '\0';
-			if (ptr != 0)
-				free(ptr);
+			if(ptr)
+			{
+			while(ptr[x] && ptr)
+				printstr[i++] = ptr[x++];
+			}
+			if (p.cflag == 1)
+				printstr[i++] = '\0';
 			ft_bzero(&p, sizeof(p));
+
+			if(ptr != 0)
+			{
+				free(ptr);
+				ptr = NULL;
+			}
 			x = 0;
 		}
 		else
-			printstr[i++] = *format;
-		format++;
+		{
+
+			if(*format != '\0')
+				printstr[i++] = *format;
+		}
+
+		if(*format != '\0')
+			format++;
 	}
-	write(1, printstr, i);
+	// i = ft_strlen(printstr);
+	// ft_putstr(printstr);
+	write(1,&printstr,i);
 	va_end(ap);
 	return (i);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_xX.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgendry <rgendry@student.42.fr>            +#+  +:+       +#+        */
+/*   By:  blomo < blomo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 21:11:58 by  blomo            #+#    #+#             */
-/*   Updated: 2019/07/05 18:32:25 by rgendry          ###   ########.fr       */
+/*   Updated: 2019/07/09 16:00:24 by blomo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ char		*ft_printf_x(t_param *ft, va_list ap, union u_format f)
 
 	char *ptr;
 	char *ptr1;
-	if (ft->plus)
+	if(ft->plus)
 		ft->plus = 0;
-	if (ft->space)
+	if(ft->space)
 		ft->space = 0;
 	if (ft->z || ft->l || ft->ll || ft->j)
 	{
@@ -35,7 +35,7 @@ char		*ft_printf_x(t_param *ft, va_list ap, union u_format f)
 	else if (ft->h)
 	{
 		f.ushi = va_arg(ap,unsigned int);
-		ptr = ft_uhhdtoa_base(f.uc, 16);
+		ptr = ft_uhhdtoa_baseo(f.ushi, 16);
 	}
 	else
 	{
@@ -74,7 +74,7 @@ char		*ft_printf_bigx(t_param *ft, va_list ap, union u_format f)
 	else if (ft->h)
 	{
 		f.ushi = va_arg(ap,unsigned int);
-		ptr = ft_uhhdtoa_base(f.uc, 16);
+		ptr = ft_uhhdtoa_baseo(f.ushi, 16);
 	}
 	else
 	{

@@ -2,36 +2,26 @@
 
 void   ft_plus(char *str,char **ptr)
 {
-	//char *str2;
-	//char *str1;
 	int len1;
-	//int len2;
-	//int len3;
 	int i;
 	int j;
-	//int c;
 	int temp;
 	int temp1;
-	int count;
+	int temp2;
 	temp1 = 0;
 	temp = 0;
-	//c = 0;
 	j = 0;
 	i = 0;
+	char tempstr[20000];
+	int c = 0;
 	while(ptr[i])
-	{
-		printf("ptr = %s\n",ptr[i]);
 		i++;
-	}
 	if(i == 1)
-		{
-			str[0] = '1';
-			strcpy(str + 1,ptr[0] + 1);
-			free(ptr);
-		}
-	i--;
-
-	len1 = strlen(ptr[i]);
+	{
+		ft_strcpy(str,ptr[0]);
+		return ;
+	}
+	len1 = ft_strlen(ptr[0]);
 	i = 0;
 	while(ptr[j])
 	{
@@ -39,46 +29,40 @@ void   ft_plus(char *str,char **ptr)
 			i++;
 		while(len1 > i)
 		{
-			ptr[j][i] = '0';
+			tempstr[c] = '0';
 			i++;
+			c++;
 		}
+		ft_strcpy(tempstr + c,ptr[j]);
+		ft_strcpy(ptr[j],tempstr);
+		c = 0;
 		i = 0;
 		j++;
 	}
+	while(ptr[i])
+		i++;
+	i--;
+	temp1 = i;
+	j = 0;
 	len1--;
-	j--;
-	count = j;
 	while(len1 > -1)
 	{
-		while(j > -1)
+		while(i > - 1)
 		{
-			//if(ptr[j][len1] != '0')
-				temp = temp1 + temp + ((int)(ptr[j][len1]-48));
-				temp1 = 0;
-			j--;
+			temp = temp + (int)ptr[i][len1] - '0';
+			i--;
 		}
-	temp1 = temp / 10;
-	temp = temp % 10;
-	str[len1] = temp + 48;
-	temp = 0;
-	j = count;
-	len1--;
+		temp2 = temp % 10;
+		str[j] = temp2 + '0';
+		j++;
+		temp = temp / 10;
+		len1--;
+		i = temp1;
 	}
-	str[0] = '1';
-	printf("ptr = %s\n",str);
-	i = 0;
-	while(ptr[i])
+	if(temp != 0)
 	{
-		free(ptr[i]);
-		i++;
+		str[j] = temp + '0';
+		j++;
 	}
-
-	// while(j <= i && i != 1)
-	// {
-	// 	len1 = strlen(ptr[i]);
-	// 	len2 = strlen(ptr[i-1]);
-	// 	str = (char*)malloc(sizeof(char) * (len1 + 1)
-	//
-	// }
-	free(ptr);
+	str[j] = '\0';
 }

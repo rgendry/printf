@@ -6,7 +6,7 @@
 /*   By: rgendry <rgendry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/05 18:23:00 by rgendry           #+#    #+#             */
-/*   Updated: 2019/07/06 13:17:56 by rgendry          ###   ########.fr       */
+/*   Updated: 2019/07/09 15:09:53 by blomo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*ft_printfper(t_param *ft)
 {
 	int		x;
 	char	*ptr;
-
+	ptr = NULL;
 	x = 0;
 	if (!ft->width)
 	{

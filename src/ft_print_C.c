@@ -3,18 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_C.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgendry <rgendry@student.42.fr>            +#+  +:+       +#+        */
+/*   By:  blomo < blomo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 21:10:13 by  blomo            #+#    #+#             */
-/*   Updated: 2019/07/05 20:11:39 by rgendry          ###   ########.fr       */
+/*   Updated: 2019/07/09 18:42:18 by blomo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "ft_printf.h"
 
 char	*ft_printf_c(t_param *ft, va_list ap)
 {
 	char	*ptr;
+	ptr = NULL;
 	int		c;
 	int		x;
 	int		i;
@@ -30,8 +32,10 @@ char	*ft_printf_c(t_param *ft, va_list ap)
 	ptr[i] = '\0';
 	if (ft->minus)
 	{
-		ptr[x] = c;
-		x++;
+		if(c != 0)
+			ptr[x++] = c;
+			if (c == 0)
+				ft->cflag = 2;
 		if (ft->width)
 		{
 			while (ft->width > 1)
@@ -40,6 +44,7 @@ char	*ft_printf_c(t_param *ft, va_list ap)
 				x++;
 				ft->width--;
 			}
+			ptr[x] = '\0';
 			return (ptr);
 		}
 	}

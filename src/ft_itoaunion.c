@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoaunion.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgendry <rgendry@student.42.fr>            +#+  +:+       +#+        */
+/*   By:  blomo < blomo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 21:09:50 by  blomo            #+#    #+#             */
-/*   Updated: 2019/07/07 18:35:52 by rgendry          ###   ########.fr       */
+/*   Updated: 2019/07/09 15:42:46 by blomo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int		ft_lenght(unsigned int n)
 char			*ft_itoauun(unsigned int n)
 {
 	int				count;
-	unsigned int	res;
+	unsigned int				res;
 	int				neg;
 	char			*out;
 
@@ -107,7 +107,7 @@ static int		ft_lenghtsc(signed char n)
 	return (count);
 }
 
-char			*ft_itoaunsc(signed char n, t_param *ft)
+char			*ft_itoaunsc(signed char n,t_param *ft)
 {
 
 	int				count;
@@ -143,8 +143,8 @@ char			*ft_itoaunsc(signed char n, t_param *ft)
 
 static int		ft_lenghtsi(unsigned short  int n)
 {
-	unsigned short int	res;
-	int					count;
+	unsigned	short  int res;
+	int count;
 
 	res = n;
 	count = 0;
@@ -158,7 +158,7 @@ static int		ft_lenghtsi(unsigned short  int n)
 	return (count);
 }
 
-char			*ft_itoaunsi(signed short int n,t_param *ft)
+char			*ft_itoaunsi(signed short int n,t_param *ft )
 {
  	int				count;
 	short unsigned int	res;
@@ -227,6 +227,48 @@ char			*ft_itoaunll(unsigned long long int n)
 	out[count] = '\0';
 	// if (neg == 1)
 	// 	out[0] = '-';
+	while (count-- > neg)
+	{
+		out[count] = (char)(res % 10 + '0');
+		res /= 10;
+	}
+	return (out);
+}
+
+static int		ft_lenghtsiU(unsigned short  int n)
+{
+	unsigned	short  int res;
+	int count;
+
+	res = n;
+	count = 0;
+	if (n == 0)
+		count++;
+	while (res != 0)
+	{
+		count++;
+		res = res / 10;
+	}
+	return (count);
+}
+
+char			*ft_itoaunsiUU(unsigned short int n)
+{
+ 	int				count;
+	short unsigned int	res;
+	int				neg;
+	char			*out;
+
+	neg = 0;
+	res = n;
+
+	count = ft_lenghtsiU(res) + neg;
+	out = (char*)malloc(sizeof(char) * (count + 1));
+	if (!(out))
+		return (NULL);
+	out[count] = '\0';
+	if (neg == 1)
+		out[0] = '-';
 	while (count-- > neg)
 	{
 		out[count] = (char)(res % 10 + '0');
