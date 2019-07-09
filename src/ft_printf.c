@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  blomo < blomo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rgendry <rgendry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 17:56:53 by  blomo            #+#    #+#             */
-/*   Updated: 2019/07/09 18:41:54 by blomo            ###   ########.fr       */
+/*   Updated: 2019/07/09 21:57:17 by rgendry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,18 @@ int		ft_printf(char *format, ...)
 	{
 		if (*format == '%')
 		{
-			ptr = ft_param(&p , &format, ap);
+			ptr = ft_param(&p, &format, ap);
 			if (p.cflag == 2)
 				printstr[i++] = '\0';
-			if(ptr)
+			if (ptr)
 			{
-			while(ptr[x] && ptr)
-				printstr[i++] = ptr[x++];
+				while (ptr[x] && ptr)
+					printstr[i++] = ptr[x++];
 			}
 			if (p.cflag == 1)
 				printstr[i++] = '\0';
 			ft_bzero(&p, sizeof(p));
-
-			if(ptr != 0)
+			if (ptr != 0)
 			{
 				free(ptr);
 				ptr = NULL;
@@ -51,17 +50,13 @@ int		ft_printf(char *format, ...)
 		}
 		else
 		{
-
-			if(*format != '\0')
+			if (*format != '\0')
 				printstr[i++] = *format;
 		}
-
-		if(*format != '\0')
+		if (*format != '\0')
 			format++;
 	}
-	// i = ft_strlen(printstr);
-	// ft_putstr(printstr);
-	write(1,&printstr,i);
+	write(1, &printstr, i);
 	va_end(ap);
 	return (i);
 }

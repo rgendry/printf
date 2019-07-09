@@ -3,26 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parammode.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  blomo < blomo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rgendry <rgendry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 18:37:30 by  blomo            #+#    #+#             */
-/*   Updated: 2019/07/09 19:05:11 by blomo            ###   ########.fr       */
+/*   Updated: 2019/07/09 21:55:28 by rgendry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_parammode(t_param *param, char **format,va_list ap)
+void	ft_parammode(t_param *param, char **format, va_list ap)
 {
-	if(*(*format))
+	if (*(*format))
 		(*format)++;
 	else
 		return ;
 	ft_printf_flags(param, format);
 	if (*(*format) == '*')
 	{
-		param->width = va_arg(ap,int);
-		if(param->width < 0)
+		param->width = va_arg(ap, int);
+		if (param->width < 0)
 		{
 			param->width = param->width * -1;
 			param->minus = 1;
@@ -36,18 +36,13 @@ void	ft_parammode(t_param *param, char **format,va_list ap)
 	}
 	if (*(*format) == '.')
 	{
-
 		(*format)++;
 		if (*(*format) == '*')
 		{
-			param->precision = va_arg(ap,int);
-			// if(param->precision < 0)
-			// {
-			// 	param->precision = param->precision * -1;
-			// }
+			param->precision = va_arg(ap, int);
 			(*format)++;
 		}
-		while(*(*format) == '0')
+		while (*(*format) == '0')
 			(*format)++;
 		if (*(*format) >= '1' && *(*format) <= '9')
 		{
@@ -61,8 +56,6 @@ void	ft_parammode(t_param *param, char **format,va_list ap)
 			param->precision2 = 0;
 			param->precision = 0;
 		}
-		// else if (*(*format) == '0')
-		// 	(*format)++;
 	}
 	ft_printf_lenmod(param, format);
 }
@@ -88,7 +81,8 @@ void	ft_printf_flags(t_param *param, char **format)
 
 void	ft_printf_lenmod(t_param *param, char **format)
 {
-	while (*(*format) == 'l' || *(*format) == 'h' || *(*format) == 'j' || *(*format) == 'z' || *(*format) == 'L')
+	while (*(*format) == 'l' || *(*format) == 'h' || *(*format) == 'j'
+		|| *(*format) == 'z' || *(*format) == 'L')
 	{
 		if (*(*format) == 'l' && *((*format) + 1) == 'l')
 		{
@@ -99,7 +93,6 @@ void	ft_printf_lenmod(t_param *param, char **format)
 			param->L = 1;
 		else if (*(*format) == 'l')
 			param->l = 1;
-
 		if (*(*format) == 'h' && *((*format) + 1) == 'h')
 		{
 			(*format)++;

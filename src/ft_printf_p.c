@@ -6,7 +6,7 @@
 /*   By: rgendry <rgendry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/06 14:22:45 by rgendry           #+#    #+#             */
-/*   Updated: 2019/07/09 19:06:11 by rgendry          ###   ########.fr       */
+/*   Updated: 2019/07/09 21:00:27 by rgendry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,29 +66,10 @@ char	*ft_tmp_str(t_param *ft, int size)
 	return (str);
 }
 
-char	*ft_printf_p(t_param *ft, va_list ap)
+char	*ft_end_p(t_param *ft, char *ptr)
 {
-	void			*a;
-	char			*ptr;
-	char			*str;
-	unsigned long	add;
+	char	*str;
 
-	a = va_arg(ap, void*);
-	add = (unsigned long)a;
-	ptr = ft_ulldtoa_base(add, 16);
-	if (!a && ft->precision2 && ft->precision == 0)
-	{
-		free(ptr);
-		ptr = (char *)malloc(sizeof(char));
-		ptr[0] = '\0';
-	}
-	else if (!a && !ft->precision2)
-	{
-		free(ptr);
-		ptr = (char *)malloc(sizeof(char) * 2);
-		ptr[0] = '0';
-		ptr[1] = '\0';
-	}
 	if (ft->precision)
 	{
 		if (ft->width < ft->precision)
@@ -112,4 +93,29 @@ char	*ft_printf_p(t_param *ft, va_list ap)
 	else if (!ft->precision)
 		ptr = ft_addjoin("0x", ptr);
 	return (ptr);
+}
+
+char	*ft_printf_p(t_param *ft, va_list ap)
+{
+	void			*a;
+	char			*ptr;
+	unsigned long	add;
+
+	a = va_arg(ap, void*);
+	add = (unsigned long)a;
+	ptr = ft_ulldtoa_base(add, 16);
+	if (!a && ft->precision2 && ft->precision == 0)
+	{
+		free(ptr);
+		ptr = (char *)malloc(sizeof(char));
+		ptr[0] = '\0';
+	}
+	else if (!a && !ft->precision2)
+	{
+		free(ptr);
+		ptr = (char *)malloc(sizeof(char) * 2);
+		ptr[0] = '0';
+		ptr[1] = '\0';
+	}
+	return (ft_end_p(ft, ptr));
 }

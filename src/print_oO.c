@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   print_oO.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  blomo < blomo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rgendry <rgendry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 21:14:38 by  blomo            #+#    #+#             */
-/*   Updated: 2019/07/09 15:54:46 by blomo            ###   ########.fr       */
+/*   Updated: 2019/07/09 21:59:39 by rgendry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "ft_printf.h"
 
-char		*ft_printf_o(t_param *ft, va_list ap, union u_format f)
+char	*ft_printf_o(t_param *ft, va_list ap, union u_format f)
 {
 	char *ptr;
 	char *ptr1;
-	if(ft->plus)
+
+	if (ft->plus)
 		ft->plus = 0;
-	if(ft->space)
+	if (ft->space)
 		ft->space = 0;
 	if (ft->z || ft->l || ft->ll || ft->j)
 	{
@@ -41,7 +41,7 @@ char		*ft_printf_o(t_param *ft, va_list ap, union u_format f)
 		f.ud = va_arg(ap,unsigned int);
 		ptr = ft_uldtoa_base(f.ud, 8);
 	}
-	if(ft->reshetka )
+	if (ft->reshetka )
 	{
 		ptr1 = ft_printf_reshetkao(ft,ptr);
 	}

@@ -3,19 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_xX.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  blomo < blomo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rgendry <rgendry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 21:11:58 by  blomo            #+#    #+#             */
-/*   Updated: 2019/07/09 16:00:24 by blomo            ###   ########.fr       */
+/*   Updated: 2019/07/09 22:01:24 by rgendry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "ft_printf.h"
 
 char		*ft_printf_x(t_param *ft, va_list ap, union u_format f)
 {
-
 	char *ptr;
 	char *ptr1;
 	if(ft->plus)

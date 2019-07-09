@@ -6,26 +6,14 @@
 /*   By: rgendry <rgendry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/05 18:23:00 by rgendry           #+#    #+#             */
-/*   Updated: 2019/07/09 15:09:53 by blomo            ###   ########.fr       */
+/*   Updated: 2019/07/09 21:32:51 by rgendry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_printfper(t_param *ft)
+char	*ft_end_per(t_param *ft, char *ptr, int x)
 {
-	int		x;
-	char	*ptr;
-	ptr = NULL;
-	x = 0;
-	if (!ft->width)
-	{
-		ptr = (char *)malloc(sizeof(char) * 1);
-		ptr[1] = '\0';
-		ptr[0] = '%';
-		return (ptr);
-	}
-	ptr = (char *)malloc(sizeof(char) * ft->width);
 	if (ft->minus)
 	{
 		ptr[x] = '%';
@@ -50,4 +38,22 @@ char	*ft_printfper(t_param *ft)
 		ptr[x] = '%';
 	}
 	return (ptr);
+}
+
+char	*ft_printfper(t_param *ft)
+{
+	int		x;
+	char	*ptr;
+
+	ptr = NULL;
+	x = 0;
+	if (!ft->width)
+	{
+		ptr = (char *)malloc(sizeof(char) * 1);
+		ptr[1] = '\0';
+		ptr[0] = '%';
+		return (ptr);
+	}
+	ptr = (char *)malloc(sizeof(char) * ft->width);
+	return (ft_end_per(ft, ptr, x));
 }

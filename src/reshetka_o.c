@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reshetka_o.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  blomo < blomo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rgendry <rgendry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 21:15:07 by  blomo            #+#    #+#             */
-/*   Updated: 2019/07/09 18:05:10 by blomo            ###   ########.fr       */
+/*   Updated: 2019/07/09 22:01:05 by rgendry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void ft_minus(char *ptr,t_param *ft, char *str)
 	p = ft_strlen(str);
 	if(ft->minus)
 	{
-    ptr[i++] = '0';
+		ptr[i++] = '0';
 		if(ft->precision > p)
 		{
 			while((ft->precision - p) != 0)

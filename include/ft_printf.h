@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: olesgedz <olesgedz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgendry <rgendry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 12:54:30 by olesgedz          #+#    #+#             */
-/*   Updated: 2019/07/09 18:12:09 by blomo            ###   ########.fr       */
+/*   Updated: 2019/07/09 21:49:08 by rgendry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,6 @@ union u_format
 int		ft_printf(char *format, ...);
 
  char		*ft_param(t_param *p, char **format, va_list ap);
- char		*ft_printf_mix1(t_param *ft, char **format, va_list ap, union u_format f);
-// int		ft_printf_mix2(t_param *ft, char **format, va_list ap, union u_format f);
  void	ft_parammode(t_param *param, char **format,va_list ap);
 void	ft_printf_flags(t_param *param, char **format);
  int		ft_nlen_base(long i, int base);
