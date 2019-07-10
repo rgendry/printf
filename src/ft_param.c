@@ -6,7 +6,7 @@
 /*   By: rgendry <rgendry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 18:37:07 by  blomo            #+#    #+#             */
-/*   Updated: 2019/07/09 21:43:35 by rgendry          ###   ########.fr       */
+/*   Updated: 2019/07/10 14:21:16 by rgendry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,7 @@ char	*ft_mix1(t_param *ft, char **format, va_list ap, union u_format f)
 		return (ft_printf_x(ft, ap, f));
 	if (*(*format) == 'X')
 		return (ft_printf_bigx(ft, ap, f));
-	if (*(*format) == 'o')
-		return (ft_printf_o(ft, ap, f));
-	if (*(*format) == 'O')
+	if (*(*format) == 'o' || *(*format) == 'O')
 		return (ft_printf_o(ft, ap, f));
 	return (0);
 }

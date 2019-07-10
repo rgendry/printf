@@ -3,19 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoaunion.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  blomo < blomo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rgendry <rgendry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 21:09:50 by  blomo            #+#    #+#             */
-/*   Updated: 2019/07/09 15:42:46 by blomo            ###   ########.fr       */
+/*   Updated: 2019/07/10 13:35:32 by rgendry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int		ft_lenght(unsigned int n)
+static int	ft_lenght(unsigned int n)
 {
-	unsigned long long int res;
-	int count;
+	unsigned long long int	res;
+	int						count;
+
 	res = n;
 	count = 0;
 	if (n == 0)
@@ -28,28 +29,20 @@ static int		ft_lenght(unsigned int n)
 	return (count);
 }
 
-char			*ft_itoauun(unsigned int n)
+char		*ft_itoauun(unsigned int n)
 {
 	int				count;
-	unsigned int				res;
+	unsigned int	res;
 	int				neg;
 	char			*out;
 
 	neg = 0;
 	res = n;
-	// if (n < 0)
-	// {
-	// 	ft->cur_len = -1;
-	// 	neg = 0;
-	// 	res = (unsigned)n * -1;
-	// }
 	count = ft_lenght(res) + neg;
 	out = (char*)malloc(sizeof(char) * (count + 1));
 	if (!(out))
 		return (NULL);
 	out[count] = '\0';
-	// if (neg == 1)
-	// 	out[0] = '-';
 	while (count-- > neg)
 	{
 		out[count] = (char)(res % 10 + '0');
@@ -58,12 +51,10 @@ char			*ft_itoauun(unsigned int n)
 	return (out);
 }
 
-
-
-char			*ft_itoaun(int n,t_param *ft)
+char		*ft_itoaun(int n, t_param *ft)
 {
 	int				count;
-	unsigned int				res;
+	unsigned int	res;
 	int				neg;
 	char			*out;
 
@@ -80,8 +71,6 @@ char			*ft_itoaun(int n,t_param *ft)
 	if (!(out))
 		return (NULL);
 	out[count] = '\0';
-	// if (neg == 1)
-	// 	out[0] = '-';
 	while (count-- > neg)
 	{
 		out[count] = (char)(res % 10 + '0');
@@ -90,10 +79,10 @@ char			*ft_itoaun(int n,t_param *ft)
 	return (out);
 }
 
-static int		ft_lenghtsc(signed char n)
+static int	ft_lenghtsc(signed char n)
 {
-	unsigned char res;
-	int count;
+	unsigned char	res;
+	int				count;
 
 	res = n;
 	count = 0;
@@ -107,9 +96,8 @@ static int		ft_lenghtsc(signed char n)
 	return (count);
 }
 
-char			*ft_itoaunsc(signed char n,t_param *ft)
+char		*ft_itoaunsc(signed char n, t_param *ft)
 {
-
 	int				count;
 	unsigned char	res;
 	int				neg;
@@ -128,8 +116,6 @@ char			*ft_itoaunsc(signed char n,t_param *ft)
 	if (!(out))
 		return (NULL);
 	out[count] = '\0';
-	// if (neg == 1)
-	// 	out[0] = '-';
 	while (count-- > neg)
 	{
 		out[count] = (char)(res % 10 + '0');
@@ -138,13 +124,10 @@ char			*ft_itoaunsc(signed char n,t_param *ft)
 	return (out);
 }
 
-
-
-
-static int		ft_lenghtsi(unsigned short  int n)
+static int	ft_lenghtsi(unsigned short int n)
 {
-	unsigned	short  int res;
-	int count;
+	unsigned short int	res;
+	int					count;
 
 	res = n;
 	count = 0;
@@ -158,12 +141,12 @@ static int		ft_lenghtsi(unsigned short  int n)
 	return (count);
 }
 
-char			*ft_itoaunsi(signed short int n,t_param *ft )
+char		*ft_itoaunsi(signed short int n, t_param *ft)
 {
- 	int				count;
+	int					count;
 	short unsigned int	res;
-	int				neg;
-	char			*out;
+	int					neg;
+	char				*out;
 
 	neg = 0;
 	res = n;
@@ -174,8 +157,7 @@ char			*ft_itoaunsi(signed short int n,t_param *ft )
 		res = (unsigned)n * -1;
 	}
 	count = ft_lenghtsi(res) + neg;
-	out = (char*)malloc(sizeof(char) * (count + 1));
-	if (!(out))
+	if (!(out = (char*)malloc(sizeof(char) * (count + 1))))
 		return (NULL);
 	out[count] = '\0';
 	if (neg == 1)
@@ -188,10 +170,10 @@ char			*ft_itoaunsi(signed short int n,t_param *ft )
 	return (out);
 }
 
-static int		ft_lenghtll(unsigned long long int n)
+static int	ft_lenghtll(unsigned long long int n)
 {
-	unsigned long long int res;
-	int count;
+	unsigned long long int	res;
+	int						count;
 
 	res = n;
 	count = 0;
@@ -205,28 +187,20 @@ static int		ft_lenghtll(unsigned long long int n)
 	return (count);
 }
 
-char			*ft_itoaunll(unsigned long long int n)
+char		*ft_itoaunll(unsigned long long int n)
 {
-	int				count;
+	int						count;
 	unsigned long long int	res;
-	int				neg;
-	char			*out;
+	int						neg;
+	char					*out;
 
 	neg = 0;
 	res = n;
-	// if (n < 0)
-	// {
-	// 	ft->cur_len = -1;
-	// 	neg = 0;
-	// 	res = (unsigned)n * -1;
-	// }
 	count = ft_lenghtll(res) + neg;
 	out = (char*)malloc(sizeof(char) * (count + 1));
 	if (!(out))
 		return (NULL);
 	out[count] = '\0';
-	// if (neg == 1)
-	// 	out[0] = '-';
 	while (count-- > neg)
 	{
 		out[count] = (char)(res % 10 + '0');
@@ -235,10 +209,10 @@ char			*ft_itoaunll(unsigned long long int n)
 	return (out);
 }
 
-static int		ft_lenghtsiU(unsigned short  int n)
+static int	ft_lenghtsiU(unsigned short int n)
 {
-	unsigned	short  int res;
-	int count;
+	unsigned short int	res;
+	int					count;
 
 	res = n;
 	count = 0;
@@ -252,16 +226,15 @@ static int		ft_lenghtsiU(unsigned short  int n)
 	return (count);
 }
 
-char			*ft_itoaunsiUU(unsigned short int n)
+char		*ft_itoaunsiUU(unsigned short int n)
 {
- 	int				count;
+	int					count;
 	short unsigned int	res;
-	int				neg;
-	char			*out;
+	int					neg;
+	char				*out;
 
 	neg = 0;
 	res = n;
-
 	count = ft_lenghtsiU(res) + neg;
 	out = (char*)malloc(sizeof(char) * (count + 1));
 	if (!(out))
