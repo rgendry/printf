@@ -1,73 +1,88 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_f.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rgendry <rgendry@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/10 21:54:58 by rgendry           #+#    #+#             */
+/*   Updated: 2019/07/10 21:58:24 by rgendry          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-static void rec_realpart(char *str)
+static void	rec_realpart(char *str)
 {
-	int i;
-	int i1;
-	int temp1;
-	char c;
+	int		i;
+	int		i1;
+	int		temp1;
+	char	c;
+
 	i = ft_strlen(str) - 1;
-  temp1 = 0;
-  i1 = i;
-  while(i != temp1)
-  {
-    c = str[i1];
-    str[i1] = str[temp1];
-    str[temp1] = c;
-    i--;
-    if(i == temp1)
-      break;
-    temp1++;
-    i1--;
-  }
+	temp1 = 0;
+	i1 = i;
+	while (i != temp1)
+	{
+		c = str[i1];
+		str[i1] = str[temp1];
+		str[temp1] = c;
+		i--;
+		if (i == temp1)
+			break ;
+		temp1++;
+		i1--;
+	}
 }
 
-
-void ft_memdel(char **ptr)
+void		ft_memdel(char **ptr)
 {
-	int i;
+	int	i;
+
 	i = 0;
-	while(ptr[i])
-		{
-			free(ptr[i]);
-			i++;
-		}
+	while (ptr[i])
+	{
+		free(ptr[i]);
+		i++;
+	}
 	free(ptr);
 }
-static char *ft_itogres(char *str,char *str1,number *d,t_param *ft)
+
+static char	*ft_itogres(char *str, char *str1, number *d, t_param *ft)
 {
-	char *result;
-	int i;
-	int j;
-	int c;
-	int p ;
+	char	*result;
+	int		i;
+	int		j;
+	int		c;
+	int		p;
+
 	result = NULL;
 	c = 0;
 	i = 0;
 	j = 1;
 	p = 0;
-	if(!(result = (char*)malloc(sizeof(char) * 20000)))
+	if (!(result = (char*)malloc(sizeof(char) * 20000)))
 		return (NULL);
-	ft_bzero(result,sizeof(result));
-	if(d->znak == -1)
+	ft_bzero(result, sizeof(result));
+	if (d->znak == -1)
 		result[i++] = '-';
-	if(ft->precision)
+	if (ft->precision)
 	{
 		plusodinwithprecision(str1 + 1,ft);
-		if(ft->cur_len == -1)
+		if (ft->cur_len == -1)
 			plusonereal(str);
 	}
-	else if(ft->precision == 0 && ft->precision2)
+	else if (ft->precision == 0 && ft->precision2)
 	{
-		if(str1[1] != '0')
+		if (str1[1] != '0')
 		{
-			if(str1[1] > '5')
+			if (str1[1] > '5')
 				plusonereal(str);
-			else if(str1[1] == '5' && str1[2] != '\0')
+			else if (str1[1] == '5' && str1[2] != '\0')
 				plusonereal(str);
-			else if(str1[1] == '5'&& str1[2] == '\0')
+			else if (str1[1] == '5' && str1[2] == '\0')
 			{
-				while(str[p])
+				while (str[p])
 					p++;
 				p--;
 				if((str[p] - '0') % 2)
@@ -110,7 +125,7 @@ static char *ft_itogres(char *str,char *str1,number *d,t_param *ft)
 	return(result);
 }
 
-static char *countmanexp(union Byte *x,number *d,t_param *ft)
+static char	*countmanexp(union Byte *x,number *d,t_param *ft)
 {
 	char **ptr;
 	char **ptr1;
@@ -120,8 +135,8 @@ static char *countmanexp(union Byte *x,number *d,t_param *ft)
 	ptr = NULL;
 	ptr1 = NULL;
 	result = NULL;
-	ft_bzero(mantissa,20000);
-	ft_bzero(itogres,20000);
+	ft_bzero(mantissa, 20000);
+	ft_bzero(itogres, 20000);
 
 	if (d->pow > 0 )
 	{
@@ -133,7 +148,8 @@ static char *countmanexp(union Byte *x,number *d,t_param *ft)
 			ft_plus_drob(itogres,ptr1);
 		else
 			itogres[0] = '0';
-		rec_realpart(mantissa);
+		if(ptr[1] != '\0')
+			rec_realpart(mantissa);
 		if(ptr1 && ptr1[1] != 0)
 			rec_realpart(itogres);
 	}
@@ -141,8 +157,7 @@ static char *countmanexp(union Byte *x,number *d,t_param *ft)
 	{
 		mantissa[0] = '1';
 		ptr1 = drobpart(x->i,d->pow);
-		if(ptr1)
-			ft_plus_drob(itogres,ptr1);
+		ft_plus_drob(itogres,ptr1);
 		if(ptr1 && ptr1[1] != 0)
 			rec_realpart(itogres);
 	}
@@ -168,6 +183,7 @@ char		*ft_printf_f(t_param *ft, va_list ap)
 	char *itogres;
 	result = NULL;
 	itogres = NULL;
+
 	number d;
 	double f;
 	union Byte x;
@@ -185,7 +201,7 @@ char		*ft_printf_f(t_param *ft, va_list ap)
 	else if(x.i == -1.0/0.0)
 		result = ft_strdup("infinity");
 	else if(x.i != x.i)
-		result = ft_strdup("NaN");
+		result = ft_strdup("nan");
 	else
 		result = countmanexp(&x,&d,ft);
 	itogres = parsflot(result,ft);

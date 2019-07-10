@@ -3,33 +3,44 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printfs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  blomo < blomo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rgendry <rgendry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 21:13:03 by  blomo            #+#    #+#             */
-/*   Updated: 2019/07/09 18:49:26 by blomo            ###   ########.fr       */
+/*   Updated: 2019/07/10 17:10:08 by rgendry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "ft_printf.h"
 
 char		*ft_printf_s(t_param *ft, va_list ap)
 {
   char *ptr;
-	ptr = NULL;
   char *str;
   char *str1;
-  str1 = NULL;
-  int x;
-  x = 0;
-  int i;
+	int x;
+	int i;
   int z;
+
+  str1 = NULL;
+	ptr = NULL;
+  x = 0;
+
   i = 0;
-	if(ft->precision2 && ft->precision == 0)
+	str = va_arg(ap,char *);
+	if(ft->precision2 && ft->precision == 0 && !ft->width)
 	{
 		return(ptr);
 	}
-  str = va_arg(ap,char *);
+	if(ft->precision2 && ft->precision == 0 && ft->width)
+	{
+		if(!(ptr = (char*)malloc(sizeof(char) * (ft->width + 1))))
+	    return(NULL);
+		while(ft->width--)
+			ptr[x++] = ' ';
+		ptr[x] = '\0';
+		return(ptr);
+	}
+
   if(str1 != str)
     i = ft_strlen(str);
   else
@@ -46,11 +57,12 @@ char		*ft_printf_s(t_param *ft, va_list ap)
     ft->precision = 0;
   if(!(ptr = (char*)malloc(sizeof(char) * (z))))
     return(NULL);
-  ptr[z] = '\0';
+  //ptr[z] = '\0';
   if(str == str1)
   {
     str = "(null)";
   }
+
   if(ft->minus)
   {
     if(ft->precision)
@@ -119,5 +131,6 @@ char		*ft_printf_s(t_param *ft, va_list ap)
         }
       }
 }
+ptr[x] = '\0';
 return(ptr);
 }

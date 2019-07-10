@@ -1,36 +1,38 @@
 #include "ft_printf.h"
 
-static void rec_double(char *str)
+static void	rec_double(char *str)
 {
-	int i;
-	int i1;
-	int temp1;
-	char c;
+	int		i;
+	int		i1;
+	int		temp1;
+	char	c;
+
 	i = ft_strlen(str) - 1;
-  temp1 = 0;
-  i1 = i;
-  while(i != temp1)
-  {
-    c = str[i1];
-    str[i1] = str[temp1];
-    str[temp1] = c;
-    i--;
-    if(i == temp1)
-      break;
-    temp1++;
-    i1--;
-  }
+	temp1 = 0;
+	i1 = i;
+	while (i != temp1)
+	{
+		c = str[i1];
+		str[i1] = str[temp1];
+		str[temp1] = c;
+		i--;
+		if (i == temp1)
+			break;
+		temp1++;
+		i1--;
+	}
 }
 
-void plusodinwithprecision(char *str,t_param *ft)
+void		plusodinwithprecision(char *str, t_param *ft)
 {
-	int i;
-	int temp;
+	int	i;
+	int	temp;
+
 	i = 0;
 	temp = 1;
-	while(str[i])
+	while (str[i])
 		i++;
-	if(i < ft->precision)
+	if (i < ft->precision)
 	{
 		i = 0;
 		while(i < ft->precision)
@@ -43,7 +45,6 @@ void plusodinwithprecision(char *str,t_param *ft)
 		str[i] = '\0';
 		return;
 	}
-
 	if(i > ft->precision)
 		{
 			if(str[ft->precision] != '\0' && str[ft->precision] > '5')
@@ -97,22 +98,24 @@ void plusodinwithprecision(char *str,t_param *ft)
 			}
 }
 
-void plusonereal(char *str)
+void		plusonereal(char *str)
 {
 	int i;
 	int j;
 	int temp;
 	char str1[20000];
+
+	ft_bzero(str1,20000);
 	temp = 1;
 	i = 0;
 	j = 0;
-	while(str[i])
+	while (str[i])
 		i++;
 	i--;
-	while(i > -1)
+	while (i > -1)
 	{
 		temp = temp + str[i] - '0';
-		if(temp > 9)
+		if (temp > 9)
 		{
 			str1[j] = '0';
 			temp = 1;
@@ -125,10 +128,10 @@ void plusonereal(char *str)
 		i--;
 		j++;
 	}
-	if(temp)
+	if (temp)
 		str1[j++] = '1';
 	str1[j] = '\0';
-	ft_bzero(str,sizeof(str));
+	ft_bzero(str, sizeof(str));
 	rec_double(str1);
-	ft_strcpy(str,str1);
+	ft_strcpy(str, str1);
 }

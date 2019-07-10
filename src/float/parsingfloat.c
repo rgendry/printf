@@ -6,6 +6,7 @@ char *parsflot(char *str,t_param *ft)
 	int c;
 	int j;
 	char *temp;
+	temp = NULL;
 	temp = 0;
 	j = 0;
 	i = ft_strlen(str);
@@ -48,6 +49,8 @@ char *parsflot(char *str,t_param *ft)
 	{
 		if(str[0] == '-' || ft->plus)
 			ft->width--;
+		if(ft->space)
+			temp[j++] = ' ';
 		while(ft->width > i)
 		{
 			if(ft->zero)

@@ -6,7 +6,7 @@
 /*   By: rgendry <rgendry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 12:54:30 by olesgedz          #+#    #+#             */
-/*   Updated: 2019/07/10 14:21:20 by rgendry          ###   ########.fr       */
+/*   Updated: 2019/07/10 17:53:34 by rgendry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ char				*ft_itoauun(unsigned int n);
 char				*ft_printf_u(t_param *ft, va_list ap, union u_format f);
 void				ft_strcpy(char *dest, const char *src);
 char				*ft_printfper(t_param *ft);
-char				*ft_addjoin(char const *s1, char const *s2);
+char				*ft_addjoin(char *s1, char *s2);
 char				*ft_tmp_str(t_param *ft, int size);
 char				*ft_printf_p(t_param *ft, va_list ap);
 char				*ft_itoaun(int n, t_param *ft);

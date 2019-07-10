@@ -1,10 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   count_poryadok.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rgendry <rgendry@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/10 17:56:00 by rgendry           #+#    #+#             */
+/*   Updated: 2019/07/10 17:58:30 by rgendry          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int	ft_count_poryadok(long double nbr)
 {
-	union Byte 		x;
+	union Byte			x;
 	int					pow;
-	flag 				ptr;
+	flag				ptr;
+
 	x.i = nbr;
 	ptr.count = 15;
 	pow = 0;
