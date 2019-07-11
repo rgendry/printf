@@ -6,7 +6,7 @@
 /*   By: rgendry <rgendry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/10 19:29:18 by rgendry           #+#    #+#             */
-/*   Updated: 2019/07/10 20:32:42 by rgendry          ###   ########.fr       */
+/*   Updated: 2019/07/11 19:59:48 by rgendry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ char	*multiplication(char *a, char *b, int size1, int size2)
 	if (!(result = (char*)malloc(sizeof(char) * (size1 + size2 + 1))))
 		return (NULL);
 	result[size1 + size2] = '\0';
-	ft_bzero(result,size1 + size2);
-	while(--size2 > -1)
+	ft_bzero(result, size1 + size2);
+	while (--size2 > -1)
 	{
 		ptr.count = size1;
 		while (--ptr.count > -1)

@@ -6,7 +6,7 @@
 /*   By: rgendry <rgendry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/10 17:56:00 by rgendry           #+#    #+#             */
-/*   Updated: 2019/07/10 17:58:30 by rgendry          ###   ########.fr       */
+/*   Updated: 2019/07/11 14:16:33 by rgendry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_count_poryadok(long double nbr)
 	pow = 0;
 	ptr.two = 1;
 	ptr.one = 1;
-	while(ptr.count--)
+	while (ptr.count--)
 	{
 		if (x.bitfield.poryadok & ptr.one)
 			pow = pow + ptr.two;

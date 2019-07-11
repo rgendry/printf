@@ -6,7 +6,7 @@
 /*   By: rgendry <rgendry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/10 17:57:43 by rgendry           #+#    #+#             */
-/*   Updated: 2019/07/10 19:08:05 by rgendry          ###   ########.fr       */
+/*   Updated: 2019/07/11 14:17:13 by rgendry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,5 @@ void	delenie(char *str, unsigned long long int rem, unsigned long long int sub, 
 	}
 	str[i] = quot + 48;
 	i++;
-	delenie (str,rem * 10, temp, i);
+	delenie(str, rem * 10, temp, i);
 }

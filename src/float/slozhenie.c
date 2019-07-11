@@ -6,7 +6,7 @@
 /*   By: rgendry <rgendry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/10 19:28:42 by rgendry           #+#    #+#             */
-/*   Updated: 2019/07/10 21:40:04 by rgendry          ###   ########.fr       */
+/*   Updated: 2019/07/11 15:12:52 by rgendry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,64 +14,61 @@
 
 void	ft_end_pl(int len1, int i, char **ptr, char *str)
 {
-	int j;
-	int temp[3];
+	int j[4];
 
-	temp[0] = 0;
-	temp[1] = i;
-	temp[2] = 0;
-	j = 0;
-	while(len1 > -1)
+	j[0] = 0;
+	j[1] = i;
+	j[2] = 0;
+	j[3] = 0;
+	while (len1 > -1)
 	{
-		while(i > - 1)
+		while (i > -1)
 		{
-			temp[0] = temp[0] + (int)ptr[i][len1] - '0';
+			j[0] = j[0] + (int)ptr[i][len1] - '0';
 			i--;
 		}
-		temp[2] = temp[0] % 10;
-		str[j] = temp[2] + '0';
-		j++;
-		temp[0] = temp[0] / 10;
+		j[2] = j[0] % 10;
+		str[j[3]] = j[2] + '0';
+		j[3]++;
+		j[0] = j[0] / 10;
 		len1--;
-		i = temp[1];
+		i = j[1];
 	}
-	if(temp[0] != 0)
+	if (j[0] != 0)
 	{
-		str[j] = temp[0] + '0';
-		j++;
+		str[j[3]] = j[0] + '0';
+		j[3]++;
 	}
-	str[j] = '\0';
+	str[j[3]] = '\0';
 }
 
 void	ft_mid_pl(char **ptr, int len1, char *tempstr, char *str)
 {
-	int	i;
-	int	j;
-	int	c;
+	int	i[3];
 
-	i = 0;
-	j = 0;
-	c = 0;
-	while (ptr[j])
+	i[0] = 0;
+	i[1] = 0;
+	i[2] = 0;
+	while (ptr[i[1]])
 	{
-		while (ptr[j][i])
-			i++;
-		while (len1 > i++)
+		while (ptr[i[1]][i[0]])
+			i[0]++;
+		while (len1 > i[0]++)
 		{
-			tempstr[c] = '0';
-			c++;
+			tempstr[i[2]] = '0';
+			i[2]++;
 		}
-		ft_strcpy(tempstr + c, ptr[j]);
-		ft_strcpy(ptr[j], tempstr);
-		c = 0;
-		i = 0;
-		j++;
+		ft_strcpy(tempstr + i[2], ptr[i[1]]);
+		ft_strcpy(ptr[i[1]], tempstr);
+		i[2] = 0;
+		i[0] = 0;
+		i[1]++;
 	}
-	while (ptr[i])
-		i++;
-	i--;
+	while (ptr[i[0]])
+		i[0]++;
+	i[0]--;
 	len1--;
-	ft_end_pl(len1, i, ptr, str);
+	ft_end_pl(len1, i[0], ptr, str);
 }
 
 void	ft_plus(char *str, char **ptr)

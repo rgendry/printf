@@ -6,7 +6,7 @@
 /*   By: rgendry <rgendry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/06 14:22:45 by rgendry           #+#    #+#             */
-/*   Updated: 2019/07/10 15:50:57 by blomo            ###   ########.fr       */
+/*   Updated: 2019/07/11 19:47:31 by rgendry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ char	*ft_addjoin(char *s1, char *s2)
 {
 	int		i;
 	char	*str;
-	int j;
+	int		j;
+
 	j = 0;
 	if (!s1 || !s2)
 		return (NULL);
@@ -52,8 +53,8 @@ char	*ft_tmp_str(t_param *ft, int size)
 		width = ft->width - size;
 	else
 		width = ft->width - size - 2;
-	if(!(str = (char *)malloc(sizeof(char) * (ft->width - size - 1 ))))
-		return(NULL);
+	if (!(str = (char *)malloc(sizeof(char) * (ft->width - size - 1))))
+		return (NULL);
 	while (i < width)
 	{
 		if (ft->precision1)
@@ -71,8 +72,9 @@ char	*ft_tmp_str(t_param *ft, int size)
 char	*ft_end_p(t_param *ft, char *ptr)
 {
 	char	*str;
-	char 	*str1;
-	char *str2;
+	char	*str1;
+	char	*str2;
+
 	if (ft->precision)
 	{
 		if (ft->width < ft->precision)
@@ -87,10 +89,10 @@ char	*ft_end_p(t_param *ft, char *ptr)
 		if (ft->minus)
 		{
 			str1 = ft_addjoin("0x", ptr);
-			str2 = ft_addjoin(str1 , str);
+			str2 = ft_addjoin(str1, str);
 			free(str);
 			free(str1);
-			return(str2);
+			return (str2);
 		}
 		if (ft->precision1)
 			ptr = ft_addjoin(str, ptr);
@@ -101,9 +103,7 @@ char	*ft_end_p(t_param *ft, char *ptr)
 	else if (!ft->precision)
 	{
 		str1 = ft_addjoin("0x", ptr);
-		// if(ptr != NULL)
-		// 	free(ptr);
-		return(str1);
+		return (str1);
 	}
 	return (ptr);
 }
@@ -112,7 +112,7 @@ char	*ft_printf_p(t_param *ft, va_list ap)
 {
 	void			*a;
 	char			*ptr;
-	char 			*str1;
+	char			*str1;
 	unsigned long	add;
 
 	a = va_arg(ap, void*);
@@ -121,23 +121,18 @@ char	*ft_printf_p(t_param *ft, va_list ap)
 	if (!a && ft->precision2 && ft->precision == 0)
 	{
 		free(ptr);
-		// ptr = (char *)malloc(sizeof(char) * 1);
-		// ptr[0] = '\0';
 		ptr = "\0";
 	}
 	else if (!a && !ft->precision2)
 	{
 		free(ptr);
-		// ptr = (char *)malloc(sizeof(char) * 2);
-		// ptr[0] = '0';
-		// ptr[1] = '\0';
 		ptr = "0\0";
 	}
-	else if(!ft->precision && !ft->width && ptr!= NULL)
+	else if (!ft->precision && !ft->width && ptr != NULL)
 	{
 		str1 = ft_addjoin("0x", ptr);
 		free(ptr);
-		return(str1);
+		return (str1);
 	}
 	return (ft_end_p(ft, ptr));
 }

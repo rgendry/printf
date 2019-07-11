@@ -6,13 +6,13 @@
 /*   By: rgendry <rgendry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/10 19:28:28 by rgendry           #+#    #+#             */
-/*   Updated: 2019/07/10 21:44:36 by rgendry          ###   ########.fr       */
+/*   Updated: 2019/07/11 20:02:49 by rgendry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_plus_drob(char *str,char **ptr)
+void	ft_plus_drob(char *str, char **ptr)
 {
 	int len1;
 	int i;
@@ -54,7 +54,7 @@ void	ft_plus_drob(char *str,char **ptr)
 	len1--;
 	while (len1 > -1)
 	{
-		while (i > - 1)
+		while (i > -1)
 		{
 			temp = temp + (int)ptr[i][len1] - '0';
 			i--;

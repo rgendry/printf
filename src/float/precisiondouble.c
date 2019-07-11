@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   precisiondouble.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rgendry <rgendry@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/11 14:30:44 by rgendry           #+#    #+#             */
+/*   Updated: 2019/07/11 14:37:19 by rgendry          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 static void	rec_double(char *str)
@@ -17,7 +29,7 @@ static void	rec_double(char *str)
 		str[temp1] = c;
 		i--;
 		if (i == temp1)
-			break;
+			break ;
 		temp1++;
 		i1--;
 	}
@@ -35,9 +47,9 @@ void		plusodinwithprecision(char *str, t_param *ft)
 	if (i < ft->precision)
 	{
 		i = 0;
-		while(i < ft->precision)
+		while (i < ft->precision)
 		{
-			if(str[i])
+			if (str[i])
 				i++;
 			else
 				str[i++] = '0';
@@ -45,67 +57,67 @@ void		plusodinwithprecision(char *str, t_param *ft)
 		str[i] = '\0';
 		return;
 	}
-	if(i > ft->precision)
+	if (i > ft->precision)
+	{
+		if (str[ft->precision] != '\0' && str[ft->precision] > '5')
 		{
-			if(str[ft->precision] != '\0' && str[ft->precision] > '5')
+			i = ft->precision - 1;
+			while (i > -1)
 			{
-				i = ft->precision -1;
-				while(i > -1)
+				temp = temp + str[i] - '0';
+				if (temp > 9)
+				{
+					str[i] = '0';
+					temp = 1;
+					i--;
+				}
+				else
+				{
+					str[i] = temp + '0';
+					temp = 0;
+					i--;
+				}
+			}
+			if (temp)
+				ft->cur_len = -1;
+		}
+		else if (str[ft->precision] == '5')
+		{
+			if (str[ft->precision + 1] != '\0')
+			{
+				i = ft->precision - 1;
+				while (i > -1)
 				{
 					temp = temp + str[i] - '0';
-					if(temp > 9)
-							{
-								str[i] = '0';
-								temp = 1;
-								i--;
-							}
-							else
-							{
-								str[i] = temp + '0';
-								temp = 0;
-								i--;
-							}
-				}
-				if(temp)
-					ft->cur_len = -1;
-				}
-				else if(str[ft->precision] == '5')
+					if (temp > 9)
 					{
-						if(str[ft->precision+1] != '\0')
-						{
-							i = ft->precision-1;
-							while(i > -1)
-							{
-								temp = temp + str[i] -'0';
-								if(temp > 9)
-										{
-											str[i] = '0';
-											temp = 1;
-											i--;
-										}
-										else
-										{
-											str[i] = temp + '0';
-											temp = 0;
-											i--;
-										}
-							}
-							if(temp)
-								ft->cur_len = -1;
-						}
+						str[i] = '0';
+						temp = 1;
+						i--;
+					}
+					else
+					{
+						str[i] = temp + '0';
+						temp = 0;
+						i--;
+					}
 				}
-				str[ft->precision] = '\0';
+				if (temp)
+					ft->cur_len = -1;
 			}
+		}
+		str[ft->precision] = '\0';
+	}
 }
 
 void		plusonereal(char *str)
 {
-	int i;
-	int j;
-	int temp;
-	char str1[20000];
+	int		i;
+	int		j;
+	int		temp;
+	char	str1[20000];
 
-	ft_bzero(str1,20000);
+	ft_bzero(str1, 20000);
 	temp = 1;
 	i = 0;
 	j = 0;

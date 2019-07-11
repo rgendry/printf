@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgendry <rgendry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/02 17:56:53 by  blomo            #+#    #+#             */
-/*   Updated: 2019/07/10 13:12:23 by rgendry          ###   ########.fr       */
+/*   Created: 2019/07/02 17:56:53 by blomo             #+#    #+#             */
+/*   Updated: 2019/07/11 20:04:16 by rgendry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 
 int		ft_printf(char *format, ...)
 {
-	int i;
-	char *ptr;
+	char	printstr[20000];
+	int		i;
+	char	*ptr;
+	va_list	ap;
+	t_param	p;
+
 	ptr = NULL;
-	va_list ap;
-	t_param p;
 	int x;
 	x = 0;
-	char printstr[20000];
 	ft_bzero(printstr, sizeof(printstr));
 	i = 0;
 	ft_bzero(&p, sizeof(p));

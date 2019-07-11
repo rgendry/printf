@@ -6,7 +6,7 @@
 /*   By: rgendry <rgendry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/10 18:19:23 by rgendry           #+#    #+#             */
-/*   Updated: 2019/07/10 19:20:16 by rgendry          ###   ########.fr       */
+/*   Updated: 2019/07/11 14:19:40 by rgendry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	ft_countbit(long double nbr, int count)
 	{
 		if (x.bitfield.mantissa & ptr1.one)
 			ptr1.two++;
-		ptr1.one =  ptr1.one << 1;
+		ptr1.one = ptr1.one << 1;
 		count--;
 	}
 	return (ptr1.two);
@@ -58,7 +58,7 @@ char		**drobpartminus(long double nbr, int count)
 
 	ptr = NULL;
 	x.i = nbr;
-	ptr1.two = ft_countbit(nbr,count) + 1;
+	ptr1.two = ft_countbit(nbr, count) + 1;
 	if (ptr1.two == 0)
 		return (NULL);
 	if (!(ptr = (char**)malloc(sizeof(char*) * (ptr1.two + 1))))

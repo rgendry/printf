@@ -6,7 +6,7 @@
 /*   By: rgendry <rgendry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/10 19:28:07 by rgendry           #+#    #+#             */
-/*   Updated: 2019/07/10 21:49:29 by rgendry          ###   ########.fr       */
+/*   Updated: 2019/07/11 14:21:17 by rgendry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*rec_mas(char **str)
 		result[temp1] = c;
 		i--;
 		if (i == temp1)
-			break;
+			break ;
 		temp1++;
 		i1--;
 	}
